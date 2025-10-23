@@ -7,7 +7,7 @@ JSON檔案處理腳本 - 針對C# FormDetail類別結構優化
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 # 設定日誌
 logging.basicConfig(
