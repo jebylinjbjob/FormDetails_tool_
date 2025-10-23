@@ -188,6 +188,92 @@ public class FormField
 - Python 3.6+
 - 無需額外套件依賴
 
+## 🛠️ 開發環境設定
+
+### 安裝開發依賴
+
+```bash
+# 使用 pip
+pip install -e ".[dev]"
+
+# 或使用 requirements-dev.txt
+pip install -r requirements-dev.txt
+
+# 或使用 Makefile
+make install-dev
+```
+
+### 程式碼風格檢查工具
+
+本專案使用以下工具來確保程式碼品質：
+
+- **Ruff**: 快速的 Python linter 和格式化工具
+- **Black**: Python 程式碼格式化工具
+- **isort**: import 語句排序工具
+- **MyPy**: 靜態類型檢查工具
+- **Pre-commit**: Git hooks 管理工具
+
+### 使用 Pre-commit Hooks
+
+```bash
+# 安裝 pre-commit hooks
+pre-commit install
+
+# 手動執行所有檢查
+pre-commit run --all-files
+
+# 或使用 Makefile
+make pre-commit-install
+make pre-commit-run
+```
+
+### 手動執行程式碼檢查
+
+```bash
+# 檢查程式碼風格
+make lint
+
+# 格式化程式碼
+make format
+
+# 檢查格式（不修改檔案）
+make format-check
+
+# 執行所有檢查
+make check
+
+# 執行測試
+make test
+
+# 執行安全性檢查
+make security
+
+# 執行完整的 CI 檢查
+make ci
+```
+
+### GitHub Actions CI
+
+專案已設定 GitHub Actions CI 工作流程，會在以下情況自動執行：
+
+- Push 到 `main` 或 `develop` 分支
+- 建立 Pull Request 到 `main` 或 `develop` 分支
+
+CI 工作流程包含：
+
+1. **程式碼風格檢查與格式化** - 使用 Ruff、Black、isort、MyPy
+2. **測試** - 使用 pytest 執行測試並產生覆蓋率報告
+3. **安全性檢查** - 使用 Safety 和 Bandit 檢查安全性問題
+
+### 開發工作流程
+
+1. **Fork 專案並建立分支**
+2. **安裝開發依賴**: `make install-dev`
+3. **安裝 pre-commit hooks**: `make pre-commit-install`
+4. **進行開發並提交變更**
+5. **確保所有檢查通過**: `make ci`
+6. **建立 Pull Request**
+
 ## 📝 日誌記錄
 
 腳本執行時會產生詳細的日誌記錄：
@@ -202,8 +288,17 @@ public class FormField
 - 資料夾自動創建
 - 詳細的錯誤訊息和日誌記錄
 
-## 📞 支援
+## License
 
-如有問題或建議，請檢查日誌檔案或聯繫開發團隊。
+MIT License
+
+Copyright (c) 2025 jebylinjbjob
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
 ---
