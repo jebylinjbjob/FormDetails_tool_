@@ -124,10 +124,9 @@ CI 工作流程包含三個主要任務：
 - Python 3.8
 - Python 3.9
 - Python 3.10
-- Python 3.11
 - Python 3.12
 
-> **注意**: Python 3.6 和 3.7 已從支援清單中移除，因為 GitHub Actions 在 Ubuntu 24.04 上不再支援這些版本。
+> **注意**: Python 3.6、3.7 和 3.11 已從支援清單中移除，因為 GitHub Actions 在 Ubuntu 24.04 上不再支援這些版本。
 
 ## ✅ 完成狀態
 
