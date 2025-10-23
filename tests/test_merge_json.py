@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 測試檔案 - JSONMerger 類別
 """
 
 import json
 import tempfile
-import pytest
 from pathlib import Path
+
+import pytest
+
 from merge_json import JSONMerger
 
 
@@ -181,7 +182,7 @@ class TestJSONMerger:
         output_file = self.output_dir / "test_output.json"
         assert output_file.exists()
 
-        with open(output_file, 'r', encoding='utf-8') as f:
+        with open(output_file, encoding='utf-8') as f:
             saved_data = json.load(f)
 
         assert saved_data == test_data
