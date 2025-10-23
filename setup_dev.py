@@ -30,8 +30,8 @@ def main():
     python_version = sys.version_info
     print(f"Python 版本: {python_version.major}.{python_version.minor}.{python_version.micro}")
 
-    if python_version < (3, 7):
-        print("❌ 需要 Python 3.7 或更高版本")
+    if python_version < (3, 8):
+        print("❌ 需要 Python 3.8 或更高版本")
         sys.exit(1)
 
     # 安裝開發依賴
