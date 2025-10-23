@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 JSON檔案處理腳本 - 針對C# FormDetail類別結構優化
 功能：處理add資料夾中的JSON檔案，確保輸出符合C#類別定義
 """
 
 import json
-import os
-import uuid
-from pathlib import Path
 import logging
-from typing import Dict, List, Any, Optional, Union
+from pathlib import Path
+from typing import Any, Dict, Optional
 
 # 設定日誌
 logging.basicConfig(
@@ -76,10 +73,9 @@ class FormFieldProcessor:
         # 處理擴展資料 (ExtensionData)
         extension_fields = {}
         for key, value in field_data.items():
-            if key not in processed_field and value is not None:
+            if key not in processed_field and value is not None and key in ["colSpan", "translation"]:
                 # 保留額外的欄位作為擴展資料
-                if key in ["colSpan", "translation"]:  # 常見的擴展欄位
-                    extension_fields[key] = value
+                extension_fields[key] = value
 
         if extension_fields:
             processed_field["extensionData"] = extension_fields
@@ -175,7 +171,7 @@ class FormDetailProcessor:
             dict: 處理後的資料，失敗時返回None
         """
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, encoding='utf-8') as f:
                 data = json.load(f)
 
             logging.info(f"正在處理檔案: {file_path.name}")

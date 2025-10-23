@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 JSON檔案合併腳本
 功能：將append_json.json中的內容合併到add資料夾中JSON檔案的formFields陣列
 """
 
 import json
-import os
-from pathlib import Path
 import logging
-from typing import Dict, List, Any, Optional
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 # 設定日誌
 logging.basicConfig(
@@ -52,7 +50,7 @@ class JSONMerger:
                 logging.error(f"合併檔案不存在: {self.append_file}")
                 return None
 
-            with open(self.append_file, 'r', encoding='utf-8') as f:
+            with open(self.append_file, encoding='utf-8') as f:
                 # 讀取檔案內容
                 content = f.read().strip()
 
@@ -113,7 +111,7 @@ class JSONMerger:
             dict: 處理後的資料，失敗時返回None
         """
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, encoding='utf-8') as f:
                 data = json.load(f)
 
             logging.info(f"正在處理檔案: {file_path.name}")
