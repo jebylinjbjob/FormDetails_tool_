@@ -11,13 +11,12 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -36,7 +35,7 @@ dev = [
 ]
 
 [tool.ruff]
-target-version = "py36"
+target-version = "py37"
 line-length = 88
 select = [
     "E",  # pycodestyle errors
@@ -61,7 +60,7 @@ ignore = [
 
 [tool.black]
 line-length = 88
-target-version = ['py36']
+target-version = ['py37']
 include = '\.pyi?$'
 extend-exclude = '''
 /(
@@ -85,7 +84,7 @@ known_first_party = ["formdetails_tool"]
 skip_glob = ["*/migrations/*"]
 
 [tool.mypy]
-python_version = "3.6"
+python_version = "3.7"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false
