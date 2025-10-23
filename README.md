@@ -6,16 +6,19 @@
 
 ```
 FormDetails_tool/
+├── src/                           # 主要程式碼目錄
+│   ├── __init__.py               # 套件初始化檔案
+│   ├── merge_json.py             # JSON合併模組
+│   └── optimized_process_json.py # C#類別結構優化模組
+├── tests/                         # 測試檔案
+│   ├── __init__.py
+│   └── test_merge_json.py
 ├── add/                           # 輸入資料夾 - 放置需要處理的原始JSON檔案
 │   └── *.json
 ├── out/                           # 輸出資料夾 - 存放處理後的JSON檔案
 │   └── *.json
-├── tests/                         # 測試檔案
-│   ├── __init__.py
-│   └── test_merge_json.py
 ├── append_json.json               # 要合併的JSON資料
-├── merge_json.py                  # JSON合併腳本
-├── optimized_process_json.py      # C#類別結構優化腳本
+├── __main__.py                    # 統一入口點腳本
 ├── pyproject.toml                 # 專案設定檔
 ├── requirements-dev.txt            # 開發依賴
 ├── Makefile                       # 建置腳本
@@ -38,7 +41,11 @@ FormDetails_tool/
 **🚀 快速開始：**
 
 ```bash
-python merge_json.py
+# 使用統一入口點
+python -m formdetails_tool merge
+
+# 或直接執行模組
+python src/merge_json.py
 ```
 
 ### ⚡ C# 結構優化工具 (`optimized_process_json.py`)
@@ -56,7 +63,26 @@ python merge_json.py
 **🚀 快速開始：**
 
 ```bash
-python optimized_process_json.py
+# 使用統一入口點
+python -m formdetails_tool optimize
+
+# 或直接執行模組
+python src/optimized_process_json.py
+```
+
+### 🎯 統一命令列介面
+
+使用 `__main__.py` 提供統一的命令列介面：
+
+```bash
+# 執行 JSON 合併
+python -m formdetails_tool merge
+
+# 執行 C# 結構優化
+python -m formdetails_tool optimize
+
+# 執行完整處理流程
+python -m formdetails_tool all
 ```
 
 ## 🏗️ 支援的 C# 類別結構
@@ -138,7 +164,11 @@ graph LR
 2. **🚀 執行合併**
 
    ```bash
-   python merge_json.py
+   # 使用統一入口點
+   python -m formdetails_tool merge
+
+   # 或直接執行模組
+   python src/merge_json.py
    ```
 
 3. **✅ 檢查結果**
@@ -151,7 +181,11 @@ graph LR
 1. **🎯 執行優化處理**
 
    ```bash
-   python optimized_process_json.py
+   # 使用統一入口點
+   python -m formdetails_tool optimize
+
+   # 或直接執行模組
+   python src/optimized_process_json.py
    ```
 
 2. **🔍 驗證結果**
@@ -166,8 +200,13 @@ graph LR
 ```bash
 # 一次處理多個 JSON 檔案
 cp *.json add/
-python merge_json.py
-python optimized_process_json.py
+
+# 使用統一入口點執行完整流程
+python -m formdetails_tool all
+
+# 或分別執行
+python -m formdetails_tool merge
+python -m formdetails_tool optimize
 ```
 
 **使用 Makefile 快速操作：**

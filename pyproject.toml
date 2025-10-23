@@ -36,8 +36,11 @@ dev = [
     "bandit>=1.7.0",
 ]
 
-[tool.setuptools]
-py-modules = ["merge_json", "optimized_process_json"]
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
 
 [tool.ruff]
 target-version = "py38"
@@ -87,7 +90,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["formdetails_tool"]
+known_first_party = ["formdetails_tool", "src"]
 skip_glob = ["*/migrations/*"]
 
 [tool.mypy]

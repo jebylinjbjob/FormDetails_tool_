@@ -1,7 +1,7 @@
 # Makefile for FormDetails Tool
 # 簡化常用的開發命令
 
-.PHONY: help install install-dev lint format check test clean pre-commit-install pre-commit-run
+.PHONY: help install install-dev lint format check test clean pre-commit-install pre-commit-run merge optimize process-all
 
 help:  ## 顯示幫助訊息
 	@echo "可用的命令："
@@ -15,18 +15,18 @@ install-dev:  ## 安裝開發依賴
 	pip install -r requirements-dev.txt
 
 lint:  ## 執行程式碼檢查
-	ruff check .
-	mypy .
+	ruff check src/ tests/
+	mypy src/ tests/
 
 format:  ## 格式化程式碼
-	ruff format .
-	black .
-	isort .
+	ruff format src/ tests/
+	black src/ tests/
+	isort src/ tests/
 
 format-check:  ## 檢查程式碼格式（不修改檔案）
-	ruff format --check .
-	black --check .
-	isort --check-only .
+	ruff format --check src/ tests/
+	black --check src/ tests/
+	isort --check-only src/ tests/
 
 check: lint format-check  ## 執行所有檢查（不修改檔案）
 
@@ -51,6 +51,17 @@ clean:  ## 清理暫存檔案
 	rm -rf .mypy_cache/
 	rm -rf build/
 	rm -rf dist/
+	rm -rf out/
+	rm -f *.log
+
+merge:  ## 執行 JSON 合併
+	python -m formdetails_tool merge
+
+optimize:  ## 執行 C# 結構優化
+	python -m formdetails_tool optimize
+
+process-all:  ## 執行完整處理流程
+	python -m formdetails_tool all
 
 pre-commit-install:  ## 安裝 pre-commit hooks
 	pre-commit install

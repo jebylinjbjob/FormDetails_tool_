@@ -4,10 +4,15 @@
 """
 
 import json
+import sys
 import tempfile
 from pathlib import Path
 
 import pytest
+
+# 添加 src 目錄到 Python 路徑
+src_path = Path(__file__).parent.parent / "src"
+sys.path.insert(0, str(src_path))
 
 from merge_json import JSONMerger
 
