@@ -1,58 +1,67 @@
-# JSON 檔案處理工具
+# FormDetails Tool
 
-這是一個用於處理和合併 JSON 檔案的 Python 工具集，特別針對表單設計的 JSON 結構進行優化。
+一個專為 C# FormDetail 類別結構設計的 JSON 檔案處理工具集，提供合併和優化功能。
 
 ## 📁 專案結構
 
-```text
-fromdetil/
-├── add/                    # 輸入資料夾 - 放置需要處理的原始JSON檔案
-│   └── .json
-├── out/                    # 輸出資料夾 - 存放處理後的JSON檔案
-│   └── .json
-├── append_json.json        # 要合併的JSON資料
-├── merge_json.py           # JSON合併腳本
-├── optimized_process_json.py  # C#類別結構優化腳本
-└── README.md               # 說明文件
+```
+FormDetails_tool/
+├── add/                           # 輸入資料夾 - 放置需要處理的原始JSON檔案
+│   └── *.json
+├── out/                           # 輸出資料夾 - 存放處理後的JSON檔案
+│   └── *.json
+├── tests/                         # 測試檔案
+│   ├── __init__.py
+│   └── test_merge_json.py
+├── append_json.json               # 要合併的JSON資料
+├── merge_json.py                  # JSON合併腳本
+├── optimized_process_json.py      # C#類別結構優化腳本
+├── pyproject.toml                 # 專案設定檔
+├── requirements-dev.txt            # 開發依賴
+├── Makefile                       # 建置腳本
+└── README.md                      # 說明文件
 ```
 
-## 🚀 功能說明
+## 🚀 核心功能
 
-### 1. JSON 合併功能 (`merge_json.py`)
+### 📋 JSON 合併工具 (`merge_json.py`)
 
-將 `append_json.json` 中的內容自動合併到 `add/` 資料夾中所有 JSON 檔案的 `formFields` 陣列中。
+將 `append_json.json` 中的表單欄位自動合併到 `add/` 資料夾中所有 JSON 檔案的 `formFields` 陣列。
 
-**主要功能：**
+**✨ 特色功能：**
 
-- 自動掃描 `add/` 資料夾中的所有 JSON 檔案
-- 讀取 `append_json.json` 中的 formFields 資料
-- 將新增的 formFields 合併到原有陣列中
-- 儲存合併結果到 `out/` 資料夾
+- 🔍 自動掃描並處理多個 JSON 檔案
+- 🔗 智能合併 formFields 資料
+- 📁 自動建立輸出資料夾
+- 📝 詳細的處理日誌記錄
 
-**使用方式：**
+**🚀 快速開始：**
 
 ```bash
 python merge_json.py
 ```
 
-### 2. C#類別結構優化 (`optimized_process_json.py`)
+### ⚡ C# 結構優化工具 (`optimized_process_json.py`)
 
-針對 C# FormDetail 類別結構進行 JSON 資料優化處理。
+針對 C# FormDetail 類別結構進行 JSON 資料優化，確保與 .NET 序列化完全相容。
 
-**主要功能：**
+**✨ 特色功能：**
 
-- 確保 JSON 結構符合 C#類別定義
-- 移除空值欄位，避免序列化錯誤
-- 處理擴展資料（ExtensionData）
-- 資料類型一致性檢查
+- 🎯 確保 JSON 結構符合 C# 類別定義
+- 🧹 自動移除空值欄位，避免序列化錯誤
+- 🔧 處理擴展資料（ExtensionData）
+- ✅ 資料類型一致性檢查
+- 📊 支援複雜的表單結構處理
 
-**使用方式：**
+**🚀 快速開始：**
 
 ```bash
 python optimized_process_json.py
 ```
 
-## 📋 支援的 C#類別結構
+## 🏗️ 支援的 C# 類別結構
+
+本工具完全支援以下 C# 類別結構，確保 JSON 序列化/反序列化的相容性：
 
 ```csharp
 public class FormDetail
@@ -93,40 +102,87 @@ public class FormField
 }
 ```
 
-## 🔧 使用流程
+**🔧 處理特性：**
 
-### 基本合併流程
+- ✅ 支援可空類型 (`?`) 的自動處理
+- ✅ 支援 `JsonElement` 類型的動態資料
+- ✅ 支援 `JsonExtensionData` 擴展資料
+- ✅ 自動處理陣列和集合類型
 
-1. **準備資料**
+## 📋 使用指南
 
-   - 將需要處理的 JSON 檔案放入 `add/` 資料夾
-   - 準備要合併的 formFields 資料在 `append_json.json` 中
+### 🔄 工作流程概覽
 
-2. **執行合併**
+```mermaid
+graph LR
+    A[原始 JSON 檔案] --> B[add/ 資料夾]
+    C[append_json.json] --> D[合併工具]
+    B --> D
+    D --> E[out/ 資料夾]
+    E --> F[C# 優化工具]
+    F --> G[最終 JSON 檔案]
+```
+
+### 📝 步驟一：JSON 合併
+
+1. **📁 準備資料**
+
+   ```bash
+   # 將需要處理的 JSON 檔案放入 add/ 資料夾
+   cp your_form.json add/
+
+   # 準備要合併的 formFields 資料
+   echo '{"fieldName": "新欄位", "fieldType": "dxTextBox"}' > append_json.json
+   ```
+
+2. **🚀 執行合併**
 
    ```bash
    python merge_json.py
    ```
 
-3. **檢查結果**
+3. **✅ 檢查結果**
    - 處理後的檔案會出現在 `out/` 資料夾中
    - 檔案名稱保持不變
+   - 查看 `merge_json.log` 了解處理詳情
 
-### C#優化流程
+### ⚡ 步驟二：C# 結構優化
 
-1. **執行優化處理**
+1. **🎯 執行優化處理**
 
    ```bash
    python optimized_process_json.py
    ```
 
-2. **驗證結果**
-   - 檢查 `out/` 資料夾中的檔案是否符合 C#類別結構
+2. **🔍 驗證結果**
+   - 檢查 `out/` 資料夾中的檔案是否符合 C# 類別結構
    - 確保可以正常進行 `JsonSerializer.Deserialize<FormDetail>()`
+   - 查看 `process_json.log` 了解處理詳情
 
-## 📊 處理範例
+### 🔧 進階使用
 
-### 原始資料 (`add/削價單.json`)
+**批次處理多個檔案：**
+
+```bash
+# 一次處理多個 JSON 檔案
+cp *.json add/
+python merge_json.py
+python optimized_process_json.py
+```
+
+**使用 Makefile 快速操作：**
+
+```bash
+make process-all    # 執行完整處理流程
+make clean         # 清理輸出檔案
+make test          # 執行測試
+```
+
+## 📊 實際範例
+
+### 📥 輸入資料
+
+**原始表單檔案** (`add/削價單.json`):
 
 ```json
 {
@@ -145,7 +201,7 @@ public class FormField
 }
 ```
 
-### 合併資料 (`append_json.json`)
+**要合併的欄位** (`append_json.json`):
 
 ```json
 {
@@ -157,7 +213,9 @@ public class FormField
 }
 ```
 
-### 處理結果 (`out/削價單.json`)
+### 📤 處理結果
+
+**最終輸出檔案** (`out/削價單.json`):
 
 ```json
 {
@@ -182,6 +240,13 @@ public class FormField
   ]
 }
 ```
+
+### ✨ 處理效果
+
+- ✅ **自動合併**：新欄位已成功加入 `formFields` 陣列
+- ✅ **結構保持**：原始資料結構完全保留
+- ✅ **C# 相容**：輸出格式完全符合 C# 類別定義
+- ✅ **類型安全**：所有資料類型都經過驗證
 
 ## ⚙️ 系統需求
 
