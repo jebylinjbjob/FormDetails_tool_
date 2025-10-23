@@ -208,3 +208,8 @@ bandit-report.json
 # OS specific files
 .DS_Store
 Thumbs.db
+
+add/*
+!add/範例.json
+out/*
+!out/範例.json
