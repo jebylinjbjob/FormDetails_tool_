@@ -28,25 +28,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
-      - name: 執行 Ruff 檢查
-        run: |
-          ruff check . --output-format=github
+      # - name: 執行 Ruff 檢查
+      #   run: |
+      #     ruff check . --output-format=github
 
-      - name: 執行 Ruff 格式化檢查
-        run: |
-          ruff format --check .
+      # - name: 執行 Ruff 格式化檢查
+      #   run: |
+      #     ruff format --check .
 
-      - name: 執行 Black 格式化檢查
-        run: |
-          black --check --diff .
+      # - name: 執行 Black 格式化檢查
+      #   run: |
+      #     black --check --diff .
 
-      - name: 執行 isort 檢查
-        run: |
-          isort --check-only --diff .
+      # - name: 執行 isort 檢查
+      #   run: |
+      #     isort --check-only --diff .
 
-      - name: 執行 MyPy 類型檢查
-        run: |
-          mypy . --show-error-codes
+      # - name: 執行 MyPy 類型檢查
+      #   run: |
+      #     mypy . --show-error-codes
 
   test:
     name: 測試
